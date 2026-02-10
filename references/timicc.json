@@ -1,0 +1,87 @@
+{
+  "base_url": "https://timicc.com",
+  "proxy_platform": "",
+  "is_mixed": false,
+  "summary": {
+    "claude-opus-4-6-thinking": "unavailable",
+    "claude-opus-4-6-20250918": "unavailable",
+    "claude-sonnet-4-5-20250929": "unavailable",
+    "claude-haiku-4-5-20251001": "unavailable",
+    "claude-3-5-sonnet-20241022": "unavailable",
+    "claude-3-haiku-20240307": "unavailable"
+  },
+  "model_results": [
+    {
+      "verdict": "unavailable",
+      "confidence": 0.0,
+      "scores": {},
+      "evidence": [],
+      "fingerprints": [],
+      "base_url": "https://timicc.com",
+      "model": "claude-opus-4-6-thinking",
+      "rounds": 0,
+      "avg_latency_ms": 0,
+      "proxy_platform": ""
+    },
+    {
+      "verdict": "unavailable",
+      "confidence": 0.0,
+      "scores": {},
+      "evidence": [],
+      "fingerprints": [],
+      "base_url": "https://timicc.com",
+      "model": "claude-opus-4-6-20250918",
+      "rounds": 0,
+      "avg_latency_ms": 0,
+      "proxy_platform": ""
+    },
+    {
+      "verdict": "unavailable",
+      "confidence": 0.0,
+      "scores": {},
+      "evidence": [],
+      "fingerprints": [],
+      "base_url": "https://timicc.com",
+      "model": "claude-sonnet-4-5-20250929",
+      "rounds": 0,
+      "avg_latency_ms": 0,
+      "proxy_platform": ""
+    },
+    {
+      "verdict": "unavailable",
+      "confidence": 0.0,
+      "scores": {},
+      "evidence": [],
+      "fingerprints": [],
+      "base_url": "https://timicc.com",
+      "model": "claude-haiku-4-5-20251001",
+      "rounds": 0,
+      "avg_latency_ms": 0,
+      "proxy_platform": ""
+    },
+    {
+      "verdict": "unavailable",
+      "confidence": 0.0,
+      "scores": {},
+      "evidence": [],
+      "fingerprints": [],
+      "base_url": "https://timicc.com",
+      "model": "claude-3-5-sonnet-20241022",
+      "rounds": 0,
+      "avg_latency_ms": 0,
+      "proxy_platform": ""
+    },
+    {
+      "verdict": "unavailable",
+      "confidence": 0.0,
+      "scores": {},
+      "evidence": [],
+      "fingerprints": [],
+      "base_url": "https://timicc.com",
+      "model": "claude-3-haiku-20240307",
+      "rounds": 0,
+      "avg_latency_ms": 0,
+      "proxy_platform": ""
+    }
+  ]
+}
