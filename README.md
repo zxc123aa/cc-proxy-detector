@@ -35,6 +35,10 @@ Beyond fingerprint fields, reverse-engineered channels often exhibit runtime ano
 - **Model availability gaps**: Some models work, others don't — proxy only mapped certain model IDs
 - **Elevated latency + variance**: Extra hop through proxy adds 1-3s and higher P99 tail latency
 - **Thinking/streaming glitches**: Proxy fails to properly relay SSE events or thinking blocks
+- **Multimodal/image reading failure**: Image data lost in transit or backend doesn't support vision — Read returns empty for images
+- **Write large content errors**: Proxy has request/response body size limits, writing beyond a threshold fails
+- **WebFetch blocked**: Proxy network policy blocks external domain access
+- **Tool parameter validation errors**: Some tools (e.g. TaskList) hit parameter validation errors due to incomplete format conversion
 
 ## Quick Start
 
