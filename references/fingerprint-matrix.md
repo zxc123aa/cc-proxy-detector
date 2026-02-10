@@ -158,25 +158,25 @@ v5.1 新增: **缺失字段负面证据**机制，识别重写 tool_id + 注入 
 
 ```bash
 # 单模型自动检测 (自动选 sonnet/haiku)
-python3 detect.py
+python3 scripts/detect.py
 
 # 指定模型检测
-python3 detect.py --model claude-opus-4-6-thinking
+python3 scripts/detect.py --model claude-opus-4-6-thinking
 
 # 多模型扫描 (混合渠道检测)
-python3 detect.py --scan-all
+python3 scripts/detect.py --scan-all
 
 # 自定义扫描模型列表
-python3 detect.py --scan-models "claude-opus-4-6-thinking,claude-sonnet-4-5-20250929"
+python3 scripts/detect.py --scan-models "claude-opus-4-6-thinking,claude-sonnet-4-5-20250929"
 
 # 多轮采样
-python3 detect.py --scan-all --rounds 3
+python3 scripts/detect.py --scan-all --rounds 3
 
 # JSON 输出 + 保存
-python3 detect.py --scan-all --json --output report.json
+python3 scripts/detect.py --scan-all --json --output report.json
 
 # 手动指定地址和密钥
-python3 detect.py --base-url https://your-proxy.com --api-key sk-xxx
+python3 scripts/detect.py --base-url https://your-proxy.com --api-key sk-xxx
 ```
 
 ## 环境变量
