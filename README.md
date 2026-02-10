@@ -6,10 +6,35 @@ Detect the real backend origin of Claude Code proxy/relay services.
 
 ## Features
 
-- **Three-source detection**: Anthropic API / AWS Bedrock (Kiro) / Google Vertex AI (Antigravity)
+- **Three-backend detection**: Anthropic API / AWS Bedrock / Google Vertex AI
+- **Reverse-engineering source identification**: Kiro, Antigravity, Droid, Windsurf, Warp, Claude Code Max, etc.
 - **Multi-model scanning**: Detect mixed-channel routing (different models → different backends)
 - **Ratelimit dynamic verification**: Distinguish real vs forged ratelimit headers
 - **Anti-disguise**: Missing-field negative evidence to catch deep spoofing
+
+## Backend & Reverse-Engineering Sources
+
+All Claude access ultimately routes through one of three backends. Various tools reverse-engineer these backends:
+
+| Source | Backend | Description |
+|--------|---------|-------------|
+| **Anthropic API** | Anthropic | Official API Key or Max subscription |
+| **Claude Code Max** | Anthropic | OAuth-based, can be proxied via CLIProxyAPI |
+| **Kiro** | AWS Bedrock | AWS AI IDE, model prefix `kiro-` |
+| **Factory Droid** | Anthropic/Bedrock | Supports BYOK, backend depends on config |
+| **Antigravity** | Google Vertex AI | Google Cloud Code, via `googleapis.com` |
+| **Windsurf** | Bedrock/Unknown | Codeium AI IDE, internal channel unclear |
+| **Warp** | Unknown | AI terminal, internal channel unclear |
+
+## Behavioral Anomalies (Reverse-Engineering Clues)
+
+Beyond fingerprint fields, reverse-engineered channels often exhibit runtime anomalies:
+
+- **tool_use pairing errors**: `Each tool_use block must have a corresponding tool_result block` — proxy rewrites tool IDs but breaks the pairing chain
+- **Intermittent HTTP 500**: Proxy's format conversion pipeline fails on certain model/feature combos
+- **Model availability gaps**: Some models work, others don't — proxy only mapped certain model IDs
+- **Elevated latency + variance**: Extra hop through proxy adds 1-3s and higher P99 tail latency
+- **Thinking/streaming glitches**: Proxy fails to properly relay SSE events or thinking blocks
 
 ## Quick Start
 

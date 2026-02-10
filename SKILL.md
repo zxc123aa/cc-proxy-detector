@@ -37,6 +37,20 @@ python3 scripts/detect.py --scan-all --json --output report.json
 
 依赖：`pip install requests`
 
+## 后端来源全景
+
+所有 Claude 访问最终落到三个后端之一，各种工具逆向这些后端：
+
+| 来源 | 后端 | 说明 |
+|------|------|------|
+| Anthropic API | Anthropic | 官方 API Key 或 Max 订阅 |
+| Claude Code Max | Anthropic | OAuth 认证，可通过 CLIProxyAPI 转 API Key |
+| Kiro | AWS Bedrock | AWS AI IDE，model 前缀 `kiro-` |
+| Factory Droid | Anthropic/Bedrock | 支持 BYOK，后端取决于配置 |
+| Antigravity | Google Vertex AI | Google Cloud Code，走 `googleapis.com` |
+| Windsurf | Bedrock/未知 | Codeium AI IDE，内部渠道不明 |
+| Warp | 未知 | AI 终端，内部渠道不明 |
+
 ## 检测维度
 
 脚本对每个模型发送 tool_use 探测 + thinking 探测 + ratelimit 动态验证，采集以下指纹：
@@ -67,6 +81,16 @@ python3 scripts/detect.py --scan-all --json --output report.json
 **已知可被伪造的字段**：`toolu_` 前缀、`service_tier`、ratelimit headers（静态值）、`cache_creation` 嵌套对象
 
 **最难伪造**：ratelimit remaining 动态递减（需中转站维护配额计数系统）
+
+## 行为异常（逆向渠道线索）
+
+除指纹字段外，逆向渠道常出现运行时异常，可作为辅助判据：
+
+- **tool_use 配对错误**：`Each tool_use block must have a corresponding tool_result block` — 中转站重写 tool ID 但破坏了配对链
+- **间歇性 HTTP 500**：中转站格式转换管道在特定模型/功能组合上失败
+- **模型可用性缺口**：部分模型可用、部分不可用 — 中转站只映射了部分模型 ID
+- **延迟偏高且波动大**：多一跳中转增加 1-3s，P99 尾延迟明显
+- **thinking/streaming 异常**：中转站未正确转发 SSE 事件或 thinking 块
 
 ## 参考资料
 
